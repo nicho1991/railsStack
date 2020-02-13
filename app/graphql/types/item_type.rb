@@ -4,6 +4,6 @@ module Types
     field :title, String, null: false
     field :description, String, null: true
     field :image_url, String, null: true
-    field :user, Types::UserType, null: false
+    field :user, Types::UserType, null: false, description: 'a user is a user'
   end
 end

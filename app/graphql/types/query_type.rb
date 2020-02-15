@@ -8,7 +8,7 @@ module Types
           description: 'Returns a list of items in the martian library'
 
     def items # resolver method
-      Item.all
+      Item.preload(:user)
     end
   end
 end

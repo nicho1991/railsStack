@@ -5,18 +5,17 @@ class GraphqlController < ApplicationController
   # protect_from_forgery with: :null_session
 
   def execute
-    variables = ensure_hash(params[:variables])
-    query = params[:query]
-    operation_name = params[:operationName]
-    context = {
-      # Query context goes here, for example:
-      # current_user: current_user,
-    }
-    result = RailsStackSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = RailsStackSchema.execute(
+        params[:query],
+        variables: ensure_hash(params[:variables]),
+        # Only this line has chagned
+        context: { current_user: current_user },
+        operation_name: params[:operationName]
+    )
     render json: result
-  rescue => e
-    raise e unless Rails.env.development?
-    handle_error_in_development e
+    rescue => e
+      raise e unless Rails.env.development?
+      handle_error_in_development e
   end
 
   private

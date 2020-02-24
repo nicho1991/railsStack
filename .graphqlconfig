@@ -1,12 +1,14 @@
 {
+  "name": "Graphql",
   "schemaPath": "./schema.graphql",
 
   "extensions": {
     "endpoints": {
-      "Default GraphQL Endpoint": {
-        "url": "http://localhost:3000/graphiql/",
+      "endpoint": {
+        "url": "http://localhost:3000/graphql",
         "headers": {
-          "user-agent": "JS GraphQL"
+          "user-agent": "JS GraphQL",
+          "Authorization": "am9obi5kb2VAZXhhbXBsZS5jb20="
         },
         "introspect": false
       }

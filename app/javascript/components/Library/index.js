@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Query } from "react-apollo";
 import { LibraryQuery } from "./operations.graphql";
-import cs from "./styles";
+import cs from "./styles.module.css";
 import UpdateItemForm from "../UpdateItemForm";
 
 const Library = () => {

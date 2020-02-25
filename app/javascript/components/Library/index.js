@@ -3,12 +3,13 @@ import { Query } from "react-apollo";
 import { LibraryQuery } from "./operations.graphql";
 import cs from "./styles.module.css";
 import UpdateItemForm from "../UpdateItemForm";
+import Subscription from '../Subscription';
 
 const Library = () => {
     const [item, setItem] = useState(null);
     return (
         <Query query={LibraryQuery}>
-            {({ data, loading }) => (
+            {({ data, loading, subscribeToMore }) => (
                 <div className={cs.library}>
                     {loading || !data.items
                         ? "loading..."
@@ -41,6 +42,7 @@ const Library = () => {
                             />
                         )
                     }
+                    <Subscription subscribeToMore={subscribeToMore} />
                 </div>
             )}
         </Query>

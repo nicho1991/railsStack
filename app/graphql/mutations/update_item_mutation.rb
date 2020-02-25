@@ -12,9 +12,10 @@ module Mutations
       item = Item.find(id)
 
       if item.update(attributes.to_h)
+        RailsStackSchema.subscriptions.trigger("itemUpdated", {}, item)
         { item: item }
       else
-        { errors: item.errors }
+        { errors: item.errors.full_messages }
       end
     end
   end
